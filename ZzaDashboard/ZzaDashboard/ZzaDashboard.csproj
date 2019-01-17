@@ -68,6 +68,7 @@
     <Compile Include="Customers\CustomerEditView.xaml.cs">
       <DependentUpon>CustomerEditView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Customers\CustomerEditViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

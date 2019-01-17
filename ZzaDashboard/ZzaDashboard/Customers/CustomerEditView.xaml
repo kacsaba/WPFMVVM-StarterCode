@@ -3,9 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ZzaDashboard.Customers"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              mc:Ignorable="d"
              d:DesignHeight="300"
-             d:DesignWidth="300" Loaded="OnLoaded">
+             d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:CustomerEditViewModel CustomerId="7462C7C8-E24C-484A-8F93-013F1C479615" />
+    </UserControl.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}"
+                                  MethodName="LoadCustomer" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
 
         <Grid x:Name="grid1"
@@ -29,7 +41,7 @@
                    Grid.Row="0"
                    VerticalAlignment="Center" />
             <TextBox x:Name="firstNameTextBox"
-                     Text="{Binding FirstName}"
+                     Text="{Binding Customer.FirstName}"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
                      Height="23"
@@ -44,7 +56,7 @@
                    Grid.Row="1"
                    VerticalAlignment="Center" />
             <TextBox x:Name="lastNameTextBox"
-                     Text="{Binding LastName}"
+                     Text="{Binding Customer.LastName}"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
                      Height="23"
@@ -59,7 +71,7 @@
                    Grid.Row="2"
                    VerticalAlignment="Center" />
             <TextBox x:Name="phoneTextBox"
-                     Text="{Binding Phone}"
+                     Text="{Binding Customer.Phone}"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
                      Height="23"
@@ -76,7 +88,7 @@
                 <Button x:Name="saveButton"
                         Content="Save"
                         Width="75"
-                        Click="OnSave" />
+                        Command="{Binding SaveCommand}" />
             </StackPanel>
         </Grid>
 
